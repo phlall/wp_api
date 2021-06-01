@@ -1,4 +1,4 @@
-import MenuService from '@/services/apiService.js'
+import ApiService from '@/services/apiService.js'
 // import axios from "axios";
 
 export const namespaced = true
@@ -22,7 +22,7 @@ export const mutations = {
 
 export const actions = {
   register ({ commit, dispatch }, credentials) {
-    return MenuService.register(credentials).then(({ data }) => {
+    return ApiService.register(credentials).then(({ data }) => {
       commit('SET_USER_DATA', data)
       const notification = {
         type: 'success',
@@ -32,7 +32,7 @@ export const actions = {
     })
   },
   resetPassword ({ dispatch }, credentials) {
-    return MenuService.resetPassword(credentials).then(({ data }) => {
+    return ApiService.resetPassword(credentials).then(({ data }) => {
       // commit('SET_RESET_DATA', data)
       const notification = {
         type: 'success',
@@ -41,8 +41,18 @@ export const actions = {
       dispatch('notification/add', notification, { root: true })
     })
   },
+  getUsers ({ dispatch }) {
+    return ApiService.getUsers().then((data) => {
+      const notification = {
+        type: 'success',
+        message: 'Users returned'
+      }
+      dispatch('notification/add', notification, { root: true })
+      return data
+    })
+  },
   setPassword ({ commit, dispatch }, credentials) {
-    return MenuService.setPassword(credentials).then(() => {
+    return ApiService.setPassword(credentials).then(() => {
       commit('LOGOUT')
       const notification = {
         type: 'success',
@@ -53,7 +63,7 @@ export const actions = {
   },
 
   login ({ commit, dispatch }, credentials) {
-    return MenuService.login(credentials)
+    return ApiService.login(credentials)
       .then(({ data }) => {
         commit('SET_USER_DATA', data)
         const notification = {
@@ -72,6 +82,7 @@ export const actions = {
       })
   },
   logout ({ commit }) {
+    alert();
     commit('LOGOUT')
   }
 }

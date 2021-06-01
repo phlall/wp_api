@@ -1,15 +1,18 @@
 <template>
   <!-- <div id="nav">
     <router-link to="/">Home</router-link> |
-    <router-link to="/login">Login</router-link>
+    <router-link to="/login">Login</router-link> | 
+     <router-link to="/about">About</router-link> | 
+    <router-link to="/reset-password"> reset password </router-link> | 
+     <router-link to="/all-users"> Users </router-link> | 
   </div> -->
-  <NavBar />
+   <NavBar />
    <NotificationContainer/>
   <router-view/>
 </template>
 <script>
-import NavBar from './components/NavBar.vue'
 import NotificationContainer from '@/components/NotificationContainer.vue'
+import NavBar from '@/components/NavBar.vue'
 export default {
   components: {
     NotificationContainer,

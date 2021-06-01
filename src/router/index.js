@@ -1,8 +1,9 @@
 import { createRouter, createWebHashHistory } from 'vue-router'
-import Home from '../views/Home.vue'
-import Login from '../views/Login.vue'
-import ResetPassword from '../views/ResetPassword.vue'
-import SetPassword from '../views/SetPassword.vue'
+import Home from '@/views/Home.vue'
+import Login from '@/views/Login.vue'
+import ResetPassword from '@/views/ResetPassword.vue'
+import SetPassword from '@/views/SetPassword.vue'
+import AllUsers from '@/views/Users.vue'
 
 const routes = [
   {
@@ -24,6 +25,11 @@ const routes = [
     path: '/set-password',
     name: 'SetPassword',
     component: SetPassword
+  },
+  {
+    path: '/all-users',
+    name: 'AllUsers',
+    component: AllUsers
   },
   {
     path: '/about',

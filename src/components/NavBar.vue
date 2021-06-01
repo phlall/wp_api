@@ -1,24 +1,39 @@
 <template>
-  <div id="nav" class="nav">
-    <router-link to="/" class="brand">Home</router-link> |
-    <nav>
-      <router-link to="/login">Login</router-link> |
-      <router-link to="/reset-password">Reset Password</router-link> |
-      <router-link to="/set-password">Set Password</router-link> |
-
-    </nav>
+  <div id="nav" class="nav w-full bg-gray-300 shadow">
+   <div class="flex flex-row text-right">
+      <div v-if="!loggedIn"><router-link to="/login" > Login </router-link><span v-if="loggedIn"> | </span></div>
+      <div v-if="loggedIn"><button  @click="logout"> Logout </button> | </div>
+      <div v-if="loggedIn"><router-link to="/reset-password"> Reset Password </router-link> | </div>
+      <div v-if="loggedIn"> <router-link to="/all-users" > Users </router-link></div>
+     <!-- <button @click="toUsers()"> Users </button> | -->
+  </div>
   </div>
 </template>
 
 <script>
-export default {}
+import { authComputed } from '../store/helpers.js'
+export default {
+  computed: {
+    ...authComputed
+  },
+  methods: {
+    logout () {
+      this.$store.dispatch('user/logout')
+      this.$router.push({ name: 'Home' })
+      this.loggedin = false
+    },
+    toUsers () {
+      this.$router.push({ name: 'AllUsers' })
+    }
+  }
+}
 </script>
 
 <style scoped>
 .nav {
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  align-items: right;
   height: 60px;
 }
 .nav > .brand {

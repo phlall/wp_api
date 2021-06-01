@@ -6,7 +6,7 @@
           <div class="w-2/5 mx-auto bg-white border border-gray-400 border-solid pt-10 px-6 rounded">
 
             <img  class="w-1/3 mx-auto  mb-10 " v-bind:src="'/static/images/domains/primary-passport-logo.png'" />
-
+<p class="font-bold mb-4 text-red-500"> Check your email for the four digit code </P>
             <form class="form" v-on:submit.prevent="login">
               <div>
                 <BaseInput

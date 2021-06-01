@@ -33,5 +33,10 @@ export default {
   },
   login (credentials) {
     return apiClient.post('/jwt-auth/v1/token', credentials)
+  },
+  getUsers () {
+    if (this.setAuthHeader()) {
+      return apiClient.get('/wp/v2/users?context=edit')
+    }
   }
 }

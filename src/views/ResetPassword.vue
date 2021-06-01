@@ -20,6 +20,11 @@
                     <p v-if="v$.email.required.$invalid">Email is required.</p>
                   </div>
               </div>
+              <!-- <div v-if="isReset">
+                <p> Check your email and user your four digit code on the next page </p>
+                <div v-if="loggedIn"><router-link to="/set-password" >Set Password</router-link> | </div>
+
+              </div> -->
               <div class="mt-6">
                 <BaseButton
                   type="submit"
@@ -51,7 +56,8 @@ export default {
     // password: '',
     email: '',
     showPassword: false,
-    error: ''
+    error: '',
+    isReset: false
   }),
   validations () {
     return {
@@ -87,9 +93,9 @@ export default {
         })
         .then(error => {
           if (!error) {
-            this.$router.push({ name: 'Home' })
+            this.$router.push({ name: 'SetPassword' })
           } else {
-            this.$router.push({ name: 'Login' })
+            this.$router.push({ name: 'Home' })
           }
         })
     }
