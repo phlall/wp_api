@@ -9,7 +9,7 @@
 </template>
 
 <script>
-import NotificationBar from './NotificationBar'
+import NotificationBar from './NotificationBar.vue'
 import { mapState } from 'vuex'
 
 export default {

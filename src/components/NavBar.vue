@@ -5,6 +5,7 @@
       <div v-if="loggedIn"><button  @click="logout"> Logout </button> | </div>
       <div v-if="loggedIn"><router-link to="/reset-password"> Reset Password </router-link> | </div>
       <div v-if="loggedIn"> <router-link to="/all-users" > Users </router-link></div>
+      <div v-if="loggedIn"> <router-link to="/all-users" > Content </router-link></div>
      <!-- <button @click="toUsers()"> Users </button> | -->
   </div>
   </div>

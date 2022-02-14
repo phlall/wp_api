@@ -5,7 +5,6 @@ import router from './router'
 import './assets/tailwind.css'
 import camelCase from 'lodash/camelCase'
 import upperFirst from 'lodash/upperFirst'
-//import Vuelidate from 'vuelidate'
 
 const requireComponent = require.context(
   './components',
@@ -13,7 +12,6 @@ const requireComponent = require.context(
   /Base[A-Z]\w+\.(vue|js)$/
 )
 const app = createApp(App)
-//app.use(Vuelidate)
 requireComponent.keys().forEach(fileName => {
   const componentConfig = requireComponent(fileName)
 

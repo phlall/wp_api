@@ -51,6 +51,16 @@ export const actions = {
       return data
     })
   },
+  getContent ({ dispatch }) {
+    return ApiService.getContent().then((data) => {
+      const notification = {
+        type: 'success',
+        message: 'Content returned'
+      }
+      dispatch('notification/add', notification, { root: true })
+      return data
+    })
+  },
   setPassword ({ commit, dispatch }, credentials) {
     return ApiService.setPassword(credentials).then(() => {
       commit('LOGOUT')

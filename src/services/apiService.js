@@ -2,7 +2,8 @@ import axios from 'axios'
 import store from '@/store'
 
 const apiClient = axios.create({
-  baseURL: 'https://eyfspeadventures.com/wp-json',
+  // baseURL: 'https://eyfspeadventures.com/wp-json',
+  baseURL: 'https://help.primarypepassport.co.uk/wp-json',
   withCredentials: false, // This is the default
   headers: {
     Accept: 'application/json',
@@ -37,6 +38,11 @@ export default {
   getUsers () {
     if (this.setAuthHeader()) {
       return apiClient.get('/wp/v2/users?context=edit')
+    }
+  },
+  getContent () {
+    if (this.setAuthHeader()) {
+      return apiClient.get('/wp/v2/pages')
     }
   }
 }

@@ -43,12 +43,12 @@
       <div class="bg-gray-100 h-screen pt-20" >
 
         <!-- Main 1 -->
-          <div class="w-2/5 mx-auto bg-white border border-gray-400 border-solid pt-10 px-6 rounded">
+          <div class="w-64 mx-auto bg-white border border-gray-400 border-solid pt-10 px-6 rounded">
 
-            <img  class="w-1/3 mx-auto  mb-10 " v-bind:src="'/static/images/domains/primary-passport-logo.png'" />
+            <img  class="w-64 mb-10 " v-bind:src="'/static/images/domains/primary-passport-logo.png'" />
 
             <form class="form" v-on:submit.prevent="login">
-              <div>
+              <!-- <div>
                 <BaseInput
                     v-model="email"
                     type="email"
@@ -59,6 +59,14 @@
                     <p v-if="v$.email.email.$invalid">Please enter a valid email address.</p>
                     <p v-if="v$.email.required.$invalid">Email is required.</p>
                   </div>
+              </div> -->
+              <div>
+                <BaseInput
+                    v-model="email"
+                    type="text"
+                    placeholder="Enter your email"
+                    class="h-10 w-full rounded bg-gray-200 border-0 focus:outline-none focus:ring-2 focus:ring-purple-400 focus:border-transparent"
+                  />
               </div>
                 <div class="mt-4">
                 <BaseInput
@@ -104,7 +112,7 @@
 <script>
 import { mapState } from 'vuex'
 import useVuelidate from '@vuelidate/core'
-import { required, email } from '@vuelidate/validators'
+import { required } from '@vuelidate/validators'
 export default {
   name: 'LoginPage',
   setup () {
@@ -134,7 +142,8 @@ export default {
   }),
   validations () {
     return {
-      email: { required, email },
+      // email: {},
+      // email: { required, email },
       password: {
     	  required,
         containsUppercase: function (value) {
